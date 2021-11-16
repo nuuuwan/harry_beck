@@ -22,7 +22,7 @@ class Map:
     @staticmethod
     def create_example1():
         places = {
-            'Akuressa': [1.5,-2.5],
+            'Akuressa': [1.5, -2.5],
             'Ambepussa': [1, 1],
             'Anuradhapura': [2.75, 4],
             'Avissawella': [1, 0],
@@ -38,7 +38,7 @@ class Map:
             'Kalkudah': [6.5, 3.5],
             'Kandy': [3, 1],
             'Kurunegala': [2, 2],
-            'Madampe': [3.5,-2.5],
+            'Madampe': [3.5, -2.5],
             'Mankulam': [3, 6],
             'Mannar': [1.5, 6.5],
             'Maradankadawala': [3, 3.5],
@@ -59,32 +59,24 @@ class Map:
             'Trincomalee': [5, 5],
             'Vavuniya': [3, 6],
             'Wellawaya': [5, -1.5],
-            'Padiyathalawa': [6,1],
+            'Padiyathalawa': [6, 1],
             'Galkulama': [3, 3.75],
-
             'Beragala': [3, -1.5],
             'Hali-Ela': [4.5, 0],
-
             'Kegalle': [1.5, 1],
             'Polgahawela': [1.5, 1.5],
             'Rambewa': [3, 4.25],
             'Karawanella': [2.5, 0],
-
             'Passara': [5.5, 0.5],
             'Moneragala': [5.5, -1],
             'Kumbalwela': [4, -0.5],
-
             'Maha Oya': [6.25, 1.25],
             'Ampara': [6.25, 0.75],
             'Siyambalanduwa': [6.25, -0.25],
-            'Padeniya': [1.375,2.625],
+            'Padeniya': [1.375, 2.625],
             'Karaitivu': [6.5, 1.0],
-
             'Ja-Ela': [0, 0.5],
             'Yakkala': [0.5, 0.5],
-
-
-
         }
         roads = {
             'A1': ['Colombo', 'Yakkala', 'Ambepussa', 'Kandy'],
@@ -110,7 +102,15 @@ class Map:
                 'Karaitivu',
                 'Batticaloa',
             ],
-            'A5': ['Kandy', 'Nuwara-Eliya', 'Badulla', 'Passara', 'Padiyathalawa', 'Maha Oya', 'Batticaloa'],
+            'A5': [
+                'Kandy',
+                'Nuwara-Eliya',
+                'Badulla',
+                'Passara',
+                'Padiyathalawa',
+                'Maha Oya',
+                'Batticaloa',
+            ],
             'A6': [
                 'Ambepussa',
                 'Kurunegala',
@@ -143,29 +143,24 @@ class Map:
             'A13': ['Anuradhapura', 'Galkulama'],
             'A14': ['Medawachchiya', 'Paraiyanalankulam', 'Mannar'],
             'A15': ['Batticaloa', 'Kalkudah', 'Trincomalee'],
-
             'A16': ['Beragala', 'Kumbalwela', 'Hali-Ela'],
             'A17': ['Madampe', 'Akuressa', 'Galle'],
             'A18': ['Pelmadulla', 'Madampe', 'Nonagama'],
             'A19': ['Kegalle', 'Polgahawela'],
             'A20': ['Anuradhapura', 'Rambewa'],
-
             'A21': ['Kegalle', 'Karawanella'],
             'A22': ['Passara', 'Moneragala'],
             'A23': ['Wellawaya', 'Kumbalwela'],
             'A24': ['Akuressa', 'Matara'],
             'A25': ['Siyambalanduwa', 'Ampara'],
-
             'A26': ['Kandy', 'Padiyathalawa'],
             'A27': ['Ampara', 'Maha Oya'],
             'A28': ['Anuradhapura', 'Padeniya'],
-
             'A29': ['Vavuniya', 'Horowupotana'],
             'A30': ['Vavuniya', 'Paraiyanalankulam'],
             'A31': ['Ampara', 'Karaitivu'],
             'A32': ['Mannar', 'Jaffna'],
             'A33': ['Ja-Ela', 'Yakkala'],
-
             'A34': ['Mankulam', 'Mullaitivu'],
             'A35': ['Parantan', 'Mullaitivu'],
         }

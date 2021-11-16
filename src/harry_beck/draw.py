@@ -74,7 +74,6 @@ def draw_map(m):
                     stroke = 'red'
                     print(theta, dx, dy)
 
-
                 road_segments.append(
                     _(
                         'line',
