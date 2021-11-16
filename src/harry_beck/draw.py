@@ -99,7 +99,7 @@ def draw_map(m):
                     'text',
                     place,
                     {
-                        'x': x + PLACE_RADIUS * 2,
+                        'x': x + PLACE_RADIUS * 1.5,
                         'y': y + PLACE_RADIUS * 0.5,
                         'fill': PLACE_TEXT_COLOR,
                         'stroke': None,
