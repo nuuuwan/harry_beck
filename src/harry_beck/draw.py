@@ -1,15 +1,20 @@
+import math
+
 from utils import filex
 
 from harry_beck._utils import log
 from harry_beck._xml import _, render_xml
 from harry_beck.map import Map
 
-WIDTH = 500
-HEIGHT = 500
-PADDING = 100
+WIDTH = 2000
+HEIGHT = 2000
+PADDING = 50
 PLACE_RADIUS = 8
 PLACE_STROKE_WIDTH = 4
 PLACE_TEXT_COLOR = 'black'
+PLACE_STROKE = 'black'
+PLACE_FILL = 'white'
+PLACE_TEXT_FONT_SIZE = 12
 ROAD_STROKE_WIDTH = 6
 
 
@@ -33,6 +38,12 @@ def get_func_transform(m):
     x_span = max_x - min_x
     y_span = max_y - min_y
 
+    r = (x_span / WIDTH) / (y_span / HEIGHT)
+    if r > 1:
+        y_span *= r
+    else:
+        x_span /= r
+
     def transform(point):
         x, y = point
         px = (x - min_x) / x_span
@@ -54,6 +65,16 @@ def draw_map(m):
         for place in places:
             x2, y2 = transform(m.__places__[place])
             if x1:
+                dx, dy = x1 - x2, y1 - y2
+                theta = round(math.atan2(dy, dx) * 180 / (math.pi), 2)
+                error = theta % 45
+                if error == 0:
+                    stroke = 'green'
+                else:
+                    stroke = 'red'
+                    print(theta, dx, dy)
+
+
                 road_segments.append(
                     _(
                         'line',
@@ -63,7 +84,7 @@ def draw_map(m):
                             'y1': y1,
                             'x2': x2,
                             'y2': y2,
-                            'stroke': 'red',
+                            'stroke': stroke,
                             'stroke-width': ROAD_STROKE_WIDTH,
                         },
                     )
@@ -78,8 +99,10 @@ def draw_map(m):
         )
     )
 
-    def draw_point(place, point):
+    def draw_place(place, point):
         x, y = transform(point)
+        ox, oy = point
+        label = f'{place} ({ox}, {oy})'
         return _(
             'g',
             [
@@ -90,17 +113,18 @@ def draw_map(m):
                         'cx': x,
                         'cy': y,
                         'r': PLACE_RADIUS,
-                        'fill': 'white',
-                        'stroke': 'red',
+                        'fill': PLACE_FILL,
+                        'stroke': PLACE_STROKE,
                         'stroke-width': PLACE_STROKE_WIDTH,
                     },
                 ),
                 _(
                     'text',
-                    place,
+                    label,
                     {
                         'x': x + PLACE_RADIUS * 1.5,
-                        'y': y + PLACE_RADIUS * 0.5,
+                        'y': y,
+                        'font-size': PLACE_TEXT_FONT_SIZE,
                         'fill': PLACE_TEXT_COLOR,
                         'stroke': None,
                         'text-anchor': 'start',
@@ -111,7 +135,7 @@ def draw_map(m):
 
     circles = list(
         map(
-            lambda x: draw_point(x[0], x[1]),
+            lambda x: draw_place(x[0], x[1]),
             m.__places__.items(),
         )
     )
@@ -132,4 +156,10 @@ def draw_map(m):
 
 if __name__ == '__main__':
     m = Map.create_example1()
+
+    for road_i in range(1, 36):
+        road_name = 'A%d' % (road_i)
+        if road_name not in m.__roads__.keys():
+            print('Missing Road: %s' % road_name)
+
     draw_map(m)
