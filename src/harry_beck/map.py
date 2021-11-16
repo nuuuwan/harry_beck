@@ -1,4 +1,5 @@
 import json
+
 from harry_beck._utils import log
 
 
@@ -23,13 +24,17 @@ class Map:
         places = {
             'Colombo': [0, 0],
             'Ambepussa': [0.5, 0.5],
+            'Kandy': [1.5, 0.5],
             'Kurunegala': [1, 1],
             'Dambulla': [2, 2],
             'Trincomalee': [3, 3],
+            'Puttalam': [0, 2],
         }
         roads = {
-            'A1': ['Colombo', 'Ambepussa'],
+            'A1': ['Colombo', 'Ambepussa', 'Kandy'],
+            'A3': ['Colombo', 'Puttalam'],
             'A6': ['Ambepussa', 'Kurunegala', 'Dambulla', 'Trincomalee'],
+            'A10': ['Kandy', 'Kurunegala', 'Puttalam'],
         }
         return Map(places, roads)
 
